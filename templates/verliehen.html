@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Bibliothek Verwaltung</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        .li-buch{color: green;}
+    </style>
+
+</head>
+<body>
+    <h1>Ausgeborgte Bücher</h1>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <nav>
+        <ul>
+            <li><a href="/">Zur Startseite zurück</a></li>
+        </ul>
+    </nav>
+    <form method="POST" action="/verliehen">
+        <p>Verliehen von:</p>
+        <input type="date" name="von">
+        <p>Verliehen bis:</p>
+        <input type="date" name="bis" >
+        <button type="submit">suche</button>
+    </form>
+
+
+        <div class="details">
+            {% for verleih in verliehen %}
+            <ul>
+                <li>Ausborgedatum: {{verleih[10]}}</li>
+                <li class="li-buch">Buch Titel: {{verleih[13]}}</li>
+                <details>
+                    <summary>Ausgeborgt von: {{verleih[1]}} {{verleih[2]}}</summary>
+                        <ul>
+                            <li>Adresse: {{verleih[5]}} {{verleih[4]}} {{verleih[6]}}</li>
+                            <li>Email: {{verleih[3]}}</li>
+                        </ul>
+                </details>
+            </ul>
+            {% endfor %}
+        </div>
+
+</body>
+</html>
